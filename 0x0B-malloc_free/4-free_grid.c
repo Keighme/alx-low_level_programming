@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "main.h"
+#include <stdlib.h>
+
 /*
  * free_grid - start
  * @grid: param
