@@ -1,38 +1,24 @@
 #include "lists.h"
+
 /**
- * free_listint_safe - start
- * @h: pointer
- * Return: len
+ * reverse_listint - start
+ * @head: pointer
+ * Return: pointer
  */
-size_t free_listint_safe(listint_t **h)
+listint_t *reverse_listint(listint_t **head)
 {
-	size_t len = 0;
-	int diff;
-	listint_t *temp;
+	listint_t *prev = NULL;
+	listint_t *next = NULL;
 
-	if (!h || !*h)
-		return (0);
-
-	while (*h)
+	while (*head)
 	{
-		diff = *h - (*h)->next;
-		if (diff > 0)
-		{
-			temp = (*h)->next;
-			free(*h);
-			*h = temp;
-			len++;
-		}
-		else
-		{
-			free(*h);
-			*h = NULL;
-			len++;
-			break;
-		}
+		next = (*head)->next;
+		(*head)->next = prev;
+		prev = *head;
+		*head = next;
 	}
 
-	*h = NULL;
+	*head = prev;
 
-	return (len);
+	return (*head);
 }
